@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import ImageGenerator from './components/ImageGenerator';
+import ImageDisplay from './components/ImageDisplay';
 
 function App() {
+  const [generatedImage, setGeneratedImage] = useState('');
+
+  const handleGenerate = (imageUrl) => {
+    setGeneratedImage(imageUrl);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>DALL·E 2 Image Generator</h1>
+      <ImageGenerator onGenerate={handleGenerate} />
+      <ImageDisplay imageUrl={generatedImage} />
     </div>
   );
 }
